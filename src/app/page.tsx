@@ -1,101 +1,122 @@
+"use client";
+
 import Image from "next/image";
 
 export default function Home() {
+  const bgColor = "#05caff";
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="min-h-screen text-black">
+      {/* Hero Section */}
+      <header style={{ backgroundColor: bgColor }} className="flex flex-col md:flex-row items-center justify-between ">
+        <div className="flex-1 text-center ">
+          <div className="">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951086/branak_f84wfa.png"
+              alt="Tablet con prueba"
+              width={30}
+              height={45}
+              className="mx-2"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+          <h1 className=" flex justify-center items-center text-4xl md:text-5xl  mb-4">Evalúa tu nivel de Inglés</h1>
+          <p className="flex justify-center items-center text-lg mb-6">
+            Evalúa y conversa sobre tu caso directo y en vivo con un experto en lingüística.
+          </p>
+          <div className="flex justify-center items-center mt-14 ">
+            <form className="flex flex-col md:flex-row gap-4 items-center justify-center">
+              <input
+                type="text"
+                placeholder="Name"
+                className="p-2  px-0 md:px-10 border rounded-md focus:outline-none w-full md:w-auto"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                className="p-2 border px-4 md:px-10 rounded-md focus:outline-none w-full md:w-auto "
+              />
+            </form>
+          </div>
+          <div className="flex justify-center items-center mt-4">
+            <button
+              onClick={() => (window.location.href = "https://www.branak.com/take-exam/2d1075d2-3bdc-46c7-b794-c8e232ae630f")}
+              className="bg-[#fff200] text-black font-bold py-2 px-10 mt-4 rounded-2xl hover:bg-yellow-200"
+            >
+              Tomar examen
+            </button>
+          </div>
+
+
+          <p className=" flex justify-center items-center text-sm font-semibold mt-4">Resultado inmediato y confidencial</p>
+          {/* Descripción adicional */}
+          <div className="text-center mt-4 md:mt-36 px-4">
+            <p className="text-lg font-medium">
+              Más de 5000 personas han tomado este examen antes de una entrevista importante.
+            </p>
+          </div>
+
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="flex-1 mt-8 md:mt-0">
+          <div className="flex justify-center items-center">
+            <Image
+              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736786553/A%C3%B1adir_un_t%C3%ADtulo_1_elqwqi.gif"
+              alt="Tablet con prueba"
+              width={800}
+              height={550}
+              className="rounded-lg"
+            />
+          </div>
+
+          <div className=" flex justify-center items-center text-2xl font-semibold  mb-2 -mt-4">
+            Prueba tu nivel
+          </div>
+        </div>
+      </header>
+
+
+      {/* Beneficios */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-0 md:mt-10 px-20 ">
+        <div className="flex flex-col items-center">
+          <div className=" w-16 h-16 flex items-center justify-center  mb-4">
+            <Image
+              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951579/ico_1_g8xvuc.jpg"
+              alt="Tablet con prueba"
+              width={100}
+              height={100}
+              className="mx-2"
+            />
+          </div>
+          <p>
+            Obtén una clase de prueba gratis si consigues 60 puntos o más en el examen.
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <div className=" w-16 h-16 flex items-center justify-center  mb-4">
+            <Image
+              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951569/ico_2_bppjer.jpg"
+              alt="Tablet con prueba"
+              width={100}
+              height={100}
+              className="mx-2"
+            />
+          </div>
+          <p>Identifica qué tan preparado estás para el ambiente laboral.</p>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className=" w-16 h-16 flex items-center justify-center  mb-4">
+            <Image
+              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951543/ico_3_rz8pzg.jpg"
+              alt="Tablet con prueba"
+              width={80}
+              height={80}
+              className="mx-2"
+            />
+          </div>
+          <p>
+            Recibe un feedback inmediato y sugerencias específicas para mejorar tu inglés (todo sin compromiso).
+          </p>
+        </div>
+      </section>
+    </div >
   );
 }
