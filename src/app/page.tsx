@@ -70,7 +70,7 @@ const Home: NextPage = () => {
           <p className="flex justify-center items-center text-lg mb-6">
             Evalúa y conversa sobre tu caso directo y en vivo con un experto en lingüística.
           </p>
-          <div className="flex justify-center items-center mt-14">
+          <div className="flex justify-center items-center mt-4 md:mt-14">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center">
               <div className="flex flex-row gap-4">
                 <input
@@ -113,7 +113,7 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <div className="flex-1 mt-8 md:mt-0">
+        <div className="flex-1 mt-4 md:mt-0">
           <div className="flex justify-center items-center">
             <Image
               src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736786553/A%C3%B1adir_un_t%C3%ADtulo_1_elqwqi.gif"
