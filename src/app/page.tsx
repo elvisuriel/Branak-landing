@@ -2,7 +2,8 @@
 
 import type { NextPage } from 'next';
 import Image from "next/image";
-import { useState, FormEvent, ChangeEvent } from "react";
+import { useState, FormEvent, ChangeEvent, useEffect, useRef } from "react";
+
 
 interface FormData {
   name: string;
@@ -10,6 +11,8 @@ interface FormData {
 }
 
 const Home: NextPage = () => {
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const errorRef = useRef<HTMLDivElement | null>(null);
   const bgColor = "#05caff";
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -24,32 +27,45 @@ const Home: NextPage = () => {
     }));
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement | HTMLButtonElement>): Promise<void> => {
     e.preventDefault();
+    setErrorMessage(""); // Limpiar mensaje de error previo
 
     try {
-      const response = await fetch('https://back.app.esturio.com/api/usersLanding/create', {
-        method: 'POST',
+      const response = await fetch("https://back.app.esturio.com/api/usersLanding/create", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        window.location.href = "https://www.branak.com/take-exam/2d1075d2-3bdc-46c7-b794-c8e232ae630f";
+        window.location.href =
+          "https://www.branak.com/take-exam/2d1075d2-3bdc-46c7-b794-c8e232ae630f";
       } else {
         const errorData = await response.json();
-        console.error('Error submitting form:', errorData);
+        setErrorMessage(errorData.message || "Ocurrió un error al enviar el formulario.");
       }
     } catch (error) {
-      if (error instanceof Error) {
-        console.error('Error:', error.message);
-      } else {
-        console.error('An unknown error occurred');
-      }
+      setErrorMessage(
+        error instanceof Error ? error.message : "Ocurrió un error desconocido."
+      );
     }
   };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (errorRef.current && !errorRef.current.contains(event.target as Node)) {
+        setErrorMessage(""); // Cerrar el mensaje de error
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
 
   return (
     <main className="min-h-screen text-black ">
@@ -70,6 +86,22 @@ const Home: NextPage = () => {
           <p className="flex justify-center items-center text-lg mb-6">
             Evalúa y conversa sobre tu caso directo y en vivo con un experto en lingüística.
           </p>
+          {errorMessage && (
+            <div
+              ref={errorRef}
+              className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+            >
+              <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+                <p className="text-red-600 text-lg font-semibold">{errorMessage}</p>
+                <button
+                  onClick={() => setErrorMessage("")}
+                  className="mt-4 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          )}
           <div className="flex justify-center items-center mt-4 md:mt-14">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center">
               <div className="flex flex-row gap-4">
@@ -114,17 +146,23 @@ const Home: NextPage = () => {
         </div>
 
         <div className="flex-1 mt-4 md:mt-0">
-          <div className="flex justify-center items-center">
-            <Image
-              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736786553/A%C3%B1adir_un_t%C3%ADtulo_1_elqwqi.gif"
-              alt="Tablet con prueba"
-              width={800}
-              height={550}
-              priority
-              className="rounded-lg"
-            />
-          </div>
-
+          {/* Envolver la imagen en un botón que llama al mismo `handleSubmit` */}
+          <form onSubmit={handleSubmit} className="flex justify-center items-center">
+            <button
+              type="submit"
+              className="flex"
+              aria-label="Tomar examen con la imagen"
+            >
+              <Image
+                src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736786553/A%C3%B1adir_un_t%C3%ADtulo_1_elqwqi.gif"
+                alt="Tablet con prueba"
+                width={800}
+                height={550}
+                priority
+                className="rounded-lg"
+              />
+            </button>
+          </form>
           <div className="flex justify-center items-center text-2xl font-semibold mb-2 -mt-4">
             Prueba tu nivel
           </div>
