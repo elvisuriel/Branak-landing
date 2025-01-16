@@ -19,10 +19,8 @@ RUN npm run build
 # Utiliza una imagen de nginx para servir la aplicación
 FROM nginx:stable-alpine
 
-# Copiar archivos de la carpeta .next generada en la etapa de construcción
-COPY --from=build /main/.next/static ./static
-COPY --from=build /main/.next/standalone ./
-COPY --from=build /main/.next/server ./server
+# Copia el contenido estático generado
+COPY --from=build /main/out /usr/share/nginx/html
 
 # Copia el archivo de configuración de nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
