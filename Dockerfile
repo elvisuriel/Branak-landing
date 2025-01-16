@@ -1,45 +1,34 @@
-# Build stage
-FROM node:18-alpine AS builder
+# Utiliza una imagen de Node.js para construir la aplicación
+FROM node:18 as build
 
-# Establecer directorio de trabajo
-WORKDIR /app
+# Establece el directorio de trabajo en el contenedor
+WORKDIR /main
 
-# Copiar package.json y package-lock.json
+# Copia los archivos package.json y package-lock.json
 COPY package*.json ./
 
-# Instalar dependencias
+# Instala las dependencias
 RUN npm install
 
-# Copiar el resto del código fuente
+# Copia el resto del código de la aplicación
 COPY . .
 
-# Construir la aplicación
+# Construye la aplicación para producción
 RUN npm run build
 
-# Verificar contenido del directorio .next después del build
-RUN ls -la .next/
+# Utiliza una imagen de nginx para servir la aplicación
+FROM nginx:stable-alpine
 
-# Production stage
-FROM node:18-alpine
+# Copiar archivos de la carpeta .next generada en la etapa de construcción
+COPY --from=build /main/.next/static ./static
+COPY --from=build /main/.next/standalone ./
+COPY --from=build /main/.next/server ./server
 
-# Instalar nginx
-RUN apk add --no-cache nginx
+# Copia el archivo de configuración de nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-WORKDIR /app
-
-# Copiar los archivos necesarios del builder
-# Usamos rutas explícitas y verificamos cada copia
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-
-# Copiar la configuración de nginx
-COPY nginx.conf /etc/nginx/http.d/default.conf
-
-# Crear y configurar script de inicio
-RUN echo "#!/bin/sh\nnginx\nnode server.js" > /app/start.sh && \
-    chmod +x /app/start.sh
-
+# Expone el puerto en el que nginx está escuchando
 EXPOSE 81
 
-CMD ["/app/start.sh"]
+# Comando para iniciar nginx
+CMD ["nginx", "-g", "daemon off;"]
