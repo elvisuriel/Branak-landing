@@ -1,32 +1,23 @@
-# Utiliza una imagen de Node.js para construir la aplicación
-FROM node:18 as build
+# Etapa 1: Construcción de la aplicación
+FROM node:20.12.2-alpine AS builder
+WORKDIR /app
 
-# Establece el directorio de trabajo en el contenedor
-WORKDIR /main
+# Instalar dependencias
+COPY package.json package-lock.json* ./
+RUN npm ci
 
-# Copia los archivos package.json y package-lock.json
-COPY package*.json ./
-
-# Instala las dependencias
-RUN npm install
-
-# Copia el resto del código de la aplicación
+# Copiar el código fuente
 COPY . .
 
-# Construye la aplicación para producción
+# Exportar la aplicación como estática
 RUN npm run build
 
-# Utiliza una imagen de nginx para servir la aplicación
+# Etapa 2: Servir con NGINX
 FROM nginx:stable-alpine
+COPY --from=builder /app/out /usr/share/nginx/html
 
-# Copia el contenido estático generado
-COPY --from=build /main/out /usr/share/nginx/html
+# Exponer el puerto para NGINX
+EXPOSE 80
 
-# Copia el archivo de configuración de nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expone el puerto en el que nginx está escuchando
-EXPOSE 81
-
-# Comando para iniciar nginx
+# Comando por defecto para iniciar NGINX
 CMD ["nginx", "-g", "daemon off;"]
