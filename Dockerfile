@@ -28,7 +28,7 @@ COPY --from=build /main/.next/server ./server
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expone el puerto en el que nginx está escuchando
-EXPOSE 81
+EXPOSE 90
 
 # Comando para iniciar nginx
 CMD ["nginx", "-g", "daemon off;"]
