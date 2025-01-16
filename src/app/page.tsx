@@ -63,7 +63,7 @@ const Home: NextPage = () => {
               width={30}
               height={45}
               priority
-              className="mx-2"
+              className="mx-2 -mt-14"
             />
           </div>
           <h1 className="flex justify-center items-center text-4xl md:text-5xl mb-4">Evalúa tu nivel de Inglés</h1>
@@ -71,27 +71,29 @@ const Home: NextPage = () => {
             Evalúa y conversa sobre tu caso directo y en vivo con un experto en lingüística.
           </p>
           <div className="flex justify-center items-center mt-14">
-            <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 items-center justify-center">
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Name"
-                className="p-2 px-0 md:px-10 border rounded-md focus:outline-none w-full md:w-auto"
-                required
-                aria-label="Name"
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Email"
-                className="p-2 border px-4 md:px-10 rounded-md focus:outline-none w-full md:w-auto"
-                required
-                aria-label="Email"
-              />
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center">
+              <div className="flex flex-row gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Name"
+                  className="p-2   border rounded-md focus:outline-none w-full md:w-[300px]"
+                  required
+                  aria-label="Name"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email"
+                  className="p-2 border   rounded-md focus:outline-none w-full md:w-[300px]"
+                  required
+                  aria-label="Email"
+                />
+              </div>
               <button
                 type="submit"
                 className="bg-[#fff200] text-black font-bold py-2 px-10 rounded-2xl hover:bg-yellow-200 transition-colors"
@@ -100,7 +102,6 @@ const Home: NextPage = () => {
               </button>
             </form>
           </div>
-
           <p className="flex justify-center items-center text-sm font-semibold mt-4">
             Resultado inmediato y confidencial
           </p>
@@ -133,44 +134,44 @@ const Home: NextPage = () => {
       {/* Beneficios */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-0 md:mt-10 px-20">
         <div className="flex flex-col items-center">
-          <div className="w-16 h-16 flex items-center justify-center mb-4">
+          <div className="w-24 h-24 flex items-center justify-center mb-4">
             <Image
               src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951579/ico_1_g8xvuc.jpg"
               alt="Tablet con prueba"
-              width={100}
-              height={100}
+              width={120}
+              height={120}
               className="mx-2"
             />
           </div>
-          <p>
+          <p className=' text-lg'>
             Obtén una clase de prueba gratis si consigues 60 puntos o más en el examen.
           </p>
         </div>
 
         <div className="flex flex-col items-center">
-          <div className="w-16 h-16 flex items-center justify-center mb-4">
+          <div className="w-24 h-24 flex items-center justify-center mb-4">
             <Image
               src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951569/ico_2_bppjer.jpg"
+              alt="Tablet con prueba"
+              width={120}
+              height={120}
+              className="mx-2"
+            />
+          </div>
+          <p className=' text-lg'>Identifica qué tan preparado estás para el ambiente laboral.</p>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <div className="w-20 h-20 flex items-center justify-center mb-4">
+            <Image
+              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951543/ico_3_rz8pzg.jpg"
               alt="Tablet con prueba"
               width={100}
               height={100}
               className="mx-2"
             />
           </div>
-          <p>Identifica qué tan preparado estás para el ambiente laboral.</p>
-        </div>
-
-        <div className="flex flex-col items-center">
-          <div className="w-16 h-16 flex items-center justify-center mb-4">
-            <Image
-              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951543/ico_3_rz8pzg.jpg"
-              alt="Tablet con prueba"
-              width={80}
-              height={80}
-              className="mx-2"
-            />
-          </div>
-          <p>
+          <p className=' text-lg'>
             Recibe un feedback inmediato y sugerencias específicas para mejorar tu inglés (todo sin compromiso).
           </p>
         </div>
