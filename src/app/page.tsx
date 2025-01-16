@@ -52,9 +52,9 @@ const Home: NextPage = () => {
   };
 
   return (
-    <main className="min-h-screen text-black">
+    <main className="min-h-screen text-black ">
       {/* Hero Section */}
-      <header style={{ backgroundColor: bgColor }} className="flex flex-col md:flex-row items-center justify-between">
+      <header style={{ backgroundColor: bgColor }} className=" p-4 md:p-0 flex flex-col md:flex-row items-center justify-between">
         <div className="flex-1 text-center">
           <div className="">
             <Image
