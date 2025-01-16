@@ -26,9 +26,9 @@ const Home: NextPage = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    
+
     try {
-      const response = await fetch('http://localhost:4005/api/usersLanding/create', {
+      const response = await fetch('https://back.app.esturio.com/api/usersLanding/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ const Home: NextPage = () => {
             </p>
           </div>
         </div>
-        
+
         <div className="flex-1 mt-8 md:mt-0">
           <div className="flex justify-center items-center">
             <Image
