@@ -2,9 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["res.cloudinary.com"], // Permite cargar imágenes desde este dominio
+    domains: ["res.cloudinary.com"],
   },
-  output: "export", // Generar contenido estático
+  output: "standalone",
+  // Removemos la parte experimental que está causando el error
 };
 
 export default nextConfig;
