@@ -17,7 +17,7 @@ FROM nginx:stable-alpine
 COPY --from=builder /app/out /usr/share/nginx/html
 
 # Exponer el puerto para NGINX
-EXPOSE 80
+EXPOSE 81
 
 # Comando por defecto para iniciar NGINX
 CMD ["nginx", "-g", "daemon off;"]
