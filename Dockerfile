@@ -1,45 +1,21 @@
-# Build stage
 FROM node:18-alpine AS builder
-
-# Establecer directorio de trabajo
-WORKDIR /app
-
-# Copiar package.json y package-lock.json
+WORKDIR /main
 COPY package*.json ./
-
-# Instalar dependencias
 RUN npm install
-
-# Copiar el resto del código fuente
 COPY . .
-
-# Construir la aplicación
 RUN npm run build
 
-# Verificar contenido del directorio .next después del build
-RUN ls -la .next/
+FROM node:18-alpine AS runner
+WORKDIR /main
 
-# Production stage
-FROM node:18-alpine
+# Copiar archivos necesarios
+COPY --from=builder /main/next.config.js ./
+COPY --from=builder /main/public ./public
+COPY --from=builder /main/.next/standalone ./
+COPY --from=builder /main/.next/static ./.next/static
 
-# Instalar nginx
-RUN apk add --no-cache nginx
+# Exponer puerto 3000 (puerto por defecto de Next.js)
+EXPOSE 3000
 
-WORKDIR /app
-
-# Copiar los archivos necesarios del builder
-# Usamos rutas explícitas y verificamos cada copia
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-
-# Copiar la configuración de nginx
-COPY nginx.conf /etc/nginx/http.d/default.conf
-
-# Crear y configurar script de inicio
-RUN echo "#!/bin/sh\nnginx\nnode server.js" > /app/start.sh && \
-    chmod +x /app/start.sh
-
-EXPOSE 81
-
-CMD ["/app/start.sh"]
+# Iniciar la aplicación
+CMD ["node", "server.js"]
