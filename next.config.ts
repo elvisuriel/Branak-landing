@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
     domains: ["res.cloudinary.com"],
   },
   output: "standalone",
-  // Removemos la parte experimental que está causando el error
 };
 
 export default nextConfig;
