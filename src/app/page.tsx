@@ -154,7 +154,7 @@ const Home: NextPage = () => {
               aria-label="Tomar examen con la imagen"
             >
               <Image
-                src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736786553/A%C3%B1adir_un_t%C3%ADtulo_1_elqwqi.gif"
+                src="https://res.cloudinary.com/dybws2ubw/image/upload/v1737150414/branaktest_zujfv8.gif"
                 alt="Tablet con prueba"
                 width={800}
                 height={550}
@@ -172,12 +172,12 @@ const Home: NextPage = () => {
       {/* Beneficios */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-0 md:mt-10 px-20">
         <div className="flex flex-col items-center">
-          <div className="w-24 h-24 flex items-center justify-center mb-4">
+          <div className="w-28 h-28 flex items-center justify-center mb-4">
             <Image
-              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951579/ico_1_g8xvuc.jpg"
+              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1737150654/interview_icon_1_nja3ci.svg"
               alt="Tablet con prueba"
-              width={120}
-              height={120}
+              width={140}
+              height={140}
               className="mx-2"
             />
           </div>
@@ -189,7 +189,7 @@ const Home: NextPage = () => {
         <div className="flex flex-col items-center">
           <div className="w-24 h-24 flex items-center justify-center mb-4">
             <Image
-              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951569/ico_2_bppjer.jpg"
+              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1737150763/interview_icon_2_j2hdjz.svg"
               alt="Tablet con prueba"
               width={120}
               height={120}
@@ -202,10 +202,10 @@ const Home: NextPage = () => {
         <div className="flex flex-col items-center">
           <div className="w-20 h-20 flex items-center justify-center mb-4">
             <Image
-              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1736951543/ico_3_rz8pzg.jpg"
+              src="https://res.cloudinary.com/dybws2ubw/image/upload/v1737150741/test_icon_ok2qc6.svg"
               alt="Tablet con prueba"
-              width={100}
-              height={100}
+              width={90}
+              height={90}
               className="mx-2"
             />
           </div>
