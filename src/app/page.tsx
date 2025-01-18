@@ -153,7 +153,7 @@ const Home: NextPage = () => {
               aria-label="Tomar examen con la imagen"
             >
               <Image
-                src="https://res.cloudinary.com/dybws2ubw/image/upload/v1737166461/test_vovc0m.gif"
+                src="https://res.cloudinary.com/dybws2ubw/image/upload/v1737203836/testbranak_h3wg9x.gif"
                 alt="Tablet con prueba"
                 width={800}
                 height={550}
