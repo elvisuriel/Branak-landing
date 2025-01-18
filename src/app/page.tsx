@@ -167,7 +167,6 @@ const Home: NextPage = () => {
           </div>
         </div>
       </header>
-
       {/* Beneficios */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-0 md:mt-10 px-20">
         <div className="flex flex-col items-center">
