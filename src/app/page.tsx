@@ -144,7 +144,6 @@ const Home: NextPage = () => {
             </p>
           </div>
         </div>
-
         <div className="flex-1 mt-0">
           {/* Envolver la imagen en un botón que llama al mismo `handleSubmit` */}
           <form onSubmit={handleSubmit} className="flex justify-center items-center">
