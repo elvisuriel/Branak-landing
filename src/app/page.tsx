@@ -82,7 +82,7 @@ const Home: NextPage = () => {
               className="mx-2 -mt-14"
             />
           </div>
-          <h1 className="flex justify-center items-center text-4xl md:text-5xl mb-4">Evalúa tu nivel de Inglés</h1>
+          <h1 className="flex justify-center items-center text-4xl md:text-5xl mb-4 font-semibold">Evalúa tu nivel de Inglés</h1>
           <p className="flex justify-center items-center text-lg mb-6">
             Evalúa y conversa sobre tu caso directo y en vivo con un experto en lingüística.
           </p>
@@ -154,7 +154,7 @@ const Home: NextPage = () => {
               aria-label="Tomar examen con la imagen"
             >
               <Image
-                src="https://res.cloudinary.com/dybws2ubw/image/upload/v1737150414/branaktest_zujfv8.gif"
+                src="https://res.cloudinary.com/dybws2ubw/image/upload/v1737163802/TEST_gl84i0.gif"
                 alt="Tablet con prueba"
                 width={800}
                 height={550}
