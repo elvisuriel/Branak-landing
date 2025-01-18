@@ -145,7 +145,7 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-        <div className="flex-1 mt-4 md:mt-0">
+        <div className="flex-1 mt-0">
           {/* Envolver la imagen en un botón que llama al mismo `handleSubmit` */}
           <form onSubmit={handleSubmit} className="flex justify-center items-center">
             <button
@@ -163,7 +163,7 @@ const Home: NextPage = () => {
               />
             </button>
           </form>
-          <div className="flex justify-center items-center text-2xl font-semibold mb-2 -mt-4">
+          <div className="flex justify-center items-center text-2xl font-semibold  md:mb-2 md:-mt-4">
             Prueba tu nivel
           </div>
         </div>
