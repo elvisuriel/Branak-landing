@@ -65,8 +65,6 @@ const Home: NextPage = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-
   return (
     <main className="min-h-screen text-black ">
       {/* Hero Section */}
